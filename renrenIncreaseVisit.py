@@ -189,7 +189,16 @@ class RenRen:
         self.get('http://www.renren.com/' + str(uid) + '/profile')
     # 删除访问记录
     def removeVisit(self,uid):
-        r = self.get('http://www.renren.com/myfoot/deleteFoot?'+'tid='+str(uid)+'&from=myFoot_comeToVisit_delete')
+        data = {
+            'tid': str(uid),
+            'from': 'myFoot_comeToVisit_delete',
+            'requestToken': '-1006409216',
+            'domain': 'renren.com',
+            '_rtk': '8fc4685a',
+        }
+        url = 'http://www.renren.com/myfoot/deleteFoot'
+        r = self.post(url, data)
+        #r = self.get('http://www.renren.com/myfoot/deleteFoot?'+'tid='+str(uid)+'&from=myFoot_comeToVisit_delete')
     # 增加访问量：id1小号；id2：想增加访问量的号
 
 def increaseVisit(email1,pwd1,email2,pwd2):
@@ -207,17 +216,23 @@ def increaseVisit(email1,pwd1,email2,pwd2):
     info = renren2.getUserInfo()
     id2 = info['hostid']
     print email2,info['hostname']
-    for i in range(100):
-        if i % 2:
-            renren1.visit(id2)
-        else:
-            renren2.removeVisit(id1)
-        time.sleep(1)
-
+    for i in range(480):
+ #       if i % 2:
+ #           renren1.visit(id2)
+ #           print "reren1.visit"
+ #       else:
+ #           renren2.removeVisit(id1)
+ #           print "renren2.removeVisit"
+        renren1.visit(id2)
+        print "renren1.visit"
+        time.sleep(0.5)
+        renren2.removeVisit(id1)
+        print "renren2.removeVisit"
+        time.sleep(0.5)
 
 if __name__ == '__main__':
     email1 = "****";
-    pwd1 = "****";
-    email2 = "****";
-    pwd2 = "****";
+    pwd1 = "*****";
+    email2 = "*****";
+    pwd2 = "******";
     increaseVisit(email1,pwd1,email2,pwd2)
