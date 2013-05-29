@@ -244,11 +244,11 @@ def increaseVisit(email1,pwd1,emaillist,pwdlist):
 
 if __name__ == '__main__':
     email1 = "james9102@126.com";
-    pwd1 = "15051068950";
+    pwd1 = "******";
     email2 = "huangjy911@163.com";
-    pwd2 = "82303568";
+    pwd2 = "******";
 	email3 = "hjy@cse.buaa.edu.cn";
-	pwd3 = "82303568"
+	pwd3 = "********"
 	emaillist=[email2 email3]
 	pwdlist=[pwd2 pwd3]
     increaseVisit(email1,pwd1,emaillist,pwdlist)
